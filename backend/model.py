@@ -6,4 +6,6 @@ class Blog(BaseModel):
     title : str
     description: str
     author: str
+
+    
     

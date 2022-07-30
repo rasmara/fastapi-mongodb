@@ -28,10 +28,13 @@ async def create_one(user:Blog):
     raise HTTPException(400,"Error not found")
     
 
-@app.get("/api/get/",response_model = Blog)
+@app.get("/api/get/")
 async def get_one():
-    result = await fetch_one(id)
-    if result:
-        return result
-    raise HTTPException(400,"Error not found")
+    try:
+        result = await fetch_all()
+        
+        if result:
+            return result
+    except Exception as msg:
+        raise HTTPException(400,msg)
     

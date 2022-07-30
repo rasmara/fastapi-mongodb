@@ -17,9 +17,12 @@ collection = database.blogs
 
 async def create_blog(blog):
     document = blog
-    result = await collection.insert_one(blogs)
+    result = await collection.insert_one(blog)
     return document
 
-async def fetch_all(blog):
-    document = await collection.find_one({"name":user})
-    return document
+async def fetch_all() -> dict:
+    result = []
+    document = collection.find({})
+    async for data in document:
+        result.append(Blog(**data))
+    return result
