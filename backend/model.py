@@ -1,8 +1,9 @@
 from pydantic import BaseModel
 
 
-class User(BaseModel):
-    name : str
-    email : str
-    title:str
-    description:str
+
+class Blog(BaseModel):
+    title : str
+    description: str
+    author: str
+    

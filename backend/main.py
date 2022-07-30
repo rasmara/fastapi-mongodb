@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from database import *
 
-from model import User
+from model import Blog
 
 app = FastAPI()
 
@@ -20,17 +20,16 @@ app.add_middleware(
 )
 
 
-@app.post("/api/create",response_model = User)
-async def create_one(user:User):
+@app.post("/api/create",response_model = Blog)
+async def create_one(user:Blog):
     result = await create_blog(user.dict())
     if result:
         return result
     raise HTTPException(400,"Error not found")
     
 
-@app.get("/api/get/{id}",response_model = User)
-async def get_one(id:str):
-    import pdb;pdb.set_trace()
+@app.get("/api/get/",response_model = Blog)
+async def get_one():
     result = await fetch_one(id)
     if result:
         return result
