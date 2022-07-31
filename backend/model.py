@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
+from typing import Optional,
 
 
 
@@ -7,5 +8,10 @@ class Blog(BaseModel):
     description: str
     author: str
 
+
+class User(BaseModel):
+    name : str
+    email : EmailStr 
+    
     
     
